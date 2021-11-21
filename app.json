@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Try to develop an android app using React Native ",
+    "githubUrl": "https://github.com/acojocari/score.git"
   }
 }
