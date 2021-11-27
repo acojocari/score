@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import {
   StyleSheet,
@@ -8,6 +7,9 @@ import {
   Platform,
   Dimensions
 } from 'react-native';
+import Header from "./components/Header";
+import Player from "./components/Player";
+import AddPlayerForm from "./components/AddPlayerForm";
 
 export default function App() {
 
@@ -15,53 +17,19 @@ export default function App() {
 
   return (
     <SafeAreaView style={mainStyle.container}>
-      <View style={headerStyle.container}>
-        <View>
-          <Text style ={headerStyle.text}>SCORE GAME</Text>
-        </View>
-        <View>
-          <Text style ={headerStyle.text}>       Players: 3</Text>
-        </View>
-
-      </View>
-
-      <View style={bodyStyle.container}>
-      </View>
-
-      <StatusBar style="auto" />
+      <Header />
+      <Player name={'Player 1'} />
+      <Player name={'Player 2'} />
+      <Player name={'Player 2'} />
+      <AddPlayerForm />
     </SafeAreaView>
   );
 }
 
-const headerStyle = StyleSheet.create({
-  container: {
-    width:"100%",
-    height:"10%",
-    backgroundColor: '#8063FA',
-    justifyContent: "center",
-    alignItems: "center",
-    top:10,
-    flexDirection: "row"
-  },
-  text: {
-    color: "#000",
-    fontSize: 20,
-    fontWeight: "bold"
-  }
-});
-
-const bodyStyle = StyleSheet.create({
-  container: {
-    width:"100%",
-    height:"50%",
-    backgroundColor: '#fff'
-  },
-});
-
 const mainStyle = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#E8EAED',
     paddingTop:Platform.OS ==="android" ? 30 : 0,
   },
 });
