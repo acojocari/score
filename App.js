@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import {
   StyleSheet,
@@ -17,6 +18,8 @@ export default function App() {
 
   return (
     <SafeAreaView style={mainStyle.container}>
+      <StatusBar style="auto" />
+        
       <Header />
       <Player name={'Player 1'} />
       <Player name={'Player 2'} />
