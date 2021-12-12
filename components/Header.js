@@ -13,9 +13,15 @@ import Stopwatch from "./Stopwatch";
 const Header = () => {
     return (
         <View style={headerStyle.container}>
-            <Stats />
+            <View>
+                <Stats />
+            </View>
+
             <Text style ={headerStyle.text}>SCORE GAME</Text>
-            <Stopwatch />
+
+            <View>
+                <Stopwatch />
+            </View>
         </View>
     );
 }
@@ -27,15 +33,15 @@ const headerStyle = StyleSheet.create({
         width:"100%",
         height:"10%",
         backgroundColor: '#8063FA',
-        //justifyContent: "center",
+        justifyContent: "space-between",
         alignItems: "center",
         top:10,
-        flexDirection: "row",
+        flexDirection: "row"
     },
     text: {
         color: "#000",
         fontSize: 20,
         fontWeight: "bold",
-        marginLeft : 5
+        paddingLeft : 25
     }
 });

@@ -9,8 +9,8 @@ import {
   Dimensions
 } from 'react-native';
 import Header from "./components/Header";
-import Player from "./components/Player";
 import AddPlayerForm from "./components/AddPlayerForm";
+import PlayerList from "./components/PlayerList";
 
 export default function App() {
 
@@ -21,9 +21,7 @@ export default function App() {
       <StatusBar style="auto" />
         
       <Header />
-      <Player name={'Player 1'} />
-      <Player name={'Player 2'} />
-      <Player name={'Player 2'} />
+        <PlayerList />
       <AddPlayerForm />
     </SafeAreaView>
   );

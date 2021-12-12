@@ -2,14 +2,8 @@ import React from 'react';
 import {
     StyleSheet,
     Text,
-    View,
-    SafeAreaView,
-    Platform,
-    Dimensions,
-    SectionList
+    View
 } from 'react-native';
-
-import {Col,Row,Grid} from "react-native-easy-grid";
 
 const Stopwatch = () => {
     return (
@@ -24,22 +18,21 @@ export default Stopwatch;
 
 const headerStyle = StyleSheet.create({
     container: {
-//        width:"100%",
-//        height:"10%",
+        width:"100%",
         backgroundColor: '#8063FA',
-//        justifyContent: "flex-start",
+        justifyContent: "center",
         alignItems: "center",
-//        top:10,
         flexDirection: "column",
-        marginLeft : 25,
+        marginLeft : 20,
         marginRight : 10,
-        marginTop : 10,
+        marginTop : 20,
         marginBottom : 20,
+        paddingRight:50
     },
     text: {
         color: "#000",
         fontSize: 13,
-//        fontWeight: "bold",
+        fontWeight: "bold"
 
     }
 });

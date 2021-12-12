@@ -11,20 +11,29 @@ import {
     TouchableOpacity,
     TextInput
 } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Player = (props) => {
     return (
         <View style={playerStyle.container}>
             <Pressable>
-                <Text onPress={() => console.warn('Removed')} style ={playerStyle.removePlayer}>x</Text>
+                <Icon
+                    name ="remove" size={20}
+                    color="#de0101"
+                    onPress={() => console.warn('Removed')}
+                ></Icon>
             </Pressable>
+
             <Text style ={playerStyle.namePlayer}>{props.name}</Text>
+
             <Text>455</Text>
-            <TextInput style ={playerStyle.input} placeholder={"..."}/>
-            <Pressable
-                onPress={() => console.warn('Pressed')}
-                style ={playerStyle.addScore}>
-                <Text>Enter</Text>
+
+            <Pressable>
+                <TextInput
+                    style ={playerStyle.input}
+                    placeholder={" enter "}
+                    onPress={() => console.warn('Pressed')}
+                />
             </Pressable>
         </View>
     );
@@ -49,13 +58,6 @@ const playerStyle = StyleSheet.create({
         fontWeight: "bold",
         paddingRight: 100,
     },
-    removePlayer: {
-        color:'#de0101',
-        fontSize: 20,
-        justifyContent:'center',
-        alignItems:'center',
-        fontWeight: "bold",
-    },
     addScore: {
         width : 10,
         height : 10,
@@ -66,14 +68,14 @@ const playerStyle = StyleSheet.create({
         borderRadius: 5
     },
     input:{
-        width : 20,
+//        width : 20,
      //   height : 10,
 //        paddingVertical : 10,
 //        paddingHorizontal : 10,
 //        width : 300,
-        fontSize: 10,
-        backgroundColor: '#FFF',
-//        borderRadius: 60,
+//        fontSize: 10,
+        backgroundColor: '#e1e0e0',
+        borderRadius: 10,
 //        borderColor:'#8063FA',
 //        borderWidth:1
     }

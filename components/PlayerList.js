@@ -1,48 +1,45 @@
 import React from 'react';
 import {
     StyleSheet,
-    Text,
-    View
+    FlatList,
 } from 'react-native';
+import Player from "./Player";
+//Consumer allows to access the value in your component
 
+import Context from "./Context";
 
-const Stats = () => {
+const PlayerList = () => {
     const players = [
         {
             name: "Guil",
-            score: 3,
+            score: 0,
             id: 1
         },
         {
             name: "Treasure",
-            score: 45,
+            score: 0,
             id: 2
         },
         {
             name: "Ashley",
-            score: 66,
+            score: 0,
             id: 3
         },
         {
             name: "James",
-            score: 89,
+            score: 0,
             id: 4
         }
     ]
-
-    const totalPlayers = players.length;
-    const totalPoints = players.reduce( (total, player) => {
-        return total + player.score;
-    }, 0);
-
     return (
-        <View style={headerStyle.container}>
-            <Text style ={headerStyle.text}>Players: {totalPlayers}</Text>
-            <Text style ={headerStyle.text}>Total Points: {totalPoints}</Text>
-        </View>
+        <FlatList
+            data={players}
+            renderItem={({item}) => <Player name={item.name} />}
+        />
     );
 }
-export default Stats;
+
+export default PlayerList;
 
 const headerStyle = StyleSheet.create({
     container: {
@@ -51,7 +48,7 @@ const headerStyle = StyleSheet.create({
         justifyContent: "center",
         alignItems: "flex-end",
         flexDirection: "column",
-       // marginLeft : 20,
+        // marginLeft : 20,
         marginRight : 10,
         marginTop : 20,
         marginBottom : 20
