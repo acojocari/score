@@ -1,39 +1,24 @@
-import React from 'react';
+//Consumer allows to access the value in your component
+import React, {useContext} from 'react';
 import {
     StyleSheet,
     FlatList,
 } from 'react-native';
 import Player from "./Player";
-//Consumer allows to access the value in your component
-
-import Context from "./Context";
+import {GlobalContext} from "./context/Provider";
 
 const PlayerList = () => {
-    const players = [
-        {
-            name: "Guil",
-            score: 0,
-            id: 1
-        },
-        {
-            name: "Treasure",
-            score: 0,
-            id: 2
-        },
-        {
-            name: "Ashley",
-            score: 0,
-            id: 3
-        },
-        {
-            name: "James",
-            score: 0,
-            id: 4
-        }
-    ]
+
+    //give the context to the component
+    const {
+        players:{data}
+    }=useContext(GlobalContext);
+
+    console.log('players',data);
+
     return (
         <FlatList
-            data={players}
+            data={data}
             renderItem={({item}) => <Player name={item.name} />}
         />
     );

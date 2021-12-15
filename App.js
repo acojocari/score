@@ -11,6 +11,7 @@ import {
 import Header from "./components/Header";
 import AddPlayerForm from "./components/AddPlayerForm";
 import PlayerList from "./components/PlayerList";
+import GlobalContext from "./components/context/Provider";
 
 export default function App() {
 
@@ -19,11 +20,13 @@ export default function App() {
   return (
     <SafeAreaView style={mainStyle.container}>
       <StatusBar style="auto" />
-        
-      <Header />
-        <PlayerList />
-      <AddPlayerForm />
+      <GlobalContext>
+          <Header />
+          <PlayerList />
+          <AddPlayerForm />
+      </GlobalContext>
     </SafeAreaView>
+
   );
 }
 
