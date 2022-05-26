@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useContext, useReducer,useState} from 'react';
 import {
     StyleSheet,
     Text,
@@ -9,32 +9,50 @@ import {
     Dimensions,
     Pressable,
     TouchableOpacity,
-    TextInput
+    TextInput,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {GlobalContext} from "./context/Provider";
+
 
 const Player = (props) => {
+    //give the context to the component
+    const context =useContext(GlobalContext);
+   // let number;
+    const [points,setPoints]= useState('');
+    function handleSubmitt(e){
+        //to avoid the refresh page
+        e.preventDefault()
+        context.dispatch({type: 'updatePlayer', payload:{id : props.id, name: props.name, score: parseInt(props.score) + parseInt(points)}})
+        //clear the points
+        setPoints('')
+    }
     return (
         <View style={playerStyle.container}>
             <Pressable>
                 <Icon
                     name ="remove" size={20}
                     color="#de0101"
-                    onPress={() => console.warn('Removed')}
+                    onPress={() => context.dispatch({type: 'removePlayer', payload:{id : props.id}})}
                 ></Icon>
             </Pressable>
 
             <Text style ={playerStyle.namePlayer}>{props.name}</Text>
 
-            <Text>455</Text>
+            <Text>{props.score}</Text>
 
-            <Pressable>
-                <TextInput
-                    style ={playerStyle.input}
-                    placeholder={" enter "}
-                    onPress={() => console.warn('Pressed')}
-                />
-            </Pressable>
+            <TextInput
+                style={playerStyle.input}
+                placeholder="enter"
+                keyboardType="numeric"
+               value={points}
+                onChangeText={(value) => setPoints(value)}
+
+            />
+            <Button
+                title="Update"
+                onPress ={handleSubmitt}/>
+
         </View>
     );
 }

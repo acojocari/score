@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext, useState} from 'react';
 import {
     StyleSheet,
     Text,
@@ -12,19 +12,39 @@ import {
     KeyboardAvoidingView,
     TextInput
 } from 'react-native';
+import {GlobalContext} from "./context/Provider";
 
-const AddPlayerForm = (props) => {
+const AddPlayerForm = () => {
+    //give the context to the component
+    const context =useContext(GlobalContext);
+
+
+    const [playerName,setName]= useState('');
+    function handleSubmit(e){
+        //to avoid the reflech page
+        e.preventDefault()
+
+        context.dispatch({type: 'addPlayer', payload:{id : new Date().getTime(), name: playerName, score : 0}})
+        //clear the points
+        setName('')
+    }
     return (
         <KeyboardAvoidingView
             behovior={Platform.OS === "ios" ? "padding" :"height"}
-            style ={addPlayerFormStyle.wrapper}
-        >
-            <TextInput style ={addPlayerFormStyle.input} placeholder={"Enter a player's name"}/>
-            <TouchableOpacity>
-                <View  style ={addPlayerFormStyle.button}>
-                    <Text style ={addPlayerFormStyle.plus}>+</Text>
-                </View>
-            </TouchableOpacity>
+            style ={addPlayerFormStyle.wrapper}>
+
+            <TextInput
+                style ={addPlayerFormStyle.input}
+                placeholder={"Enter a player's name"}
+                value={playerName}
+                onChangeText={(value) => setName(value)}
+            />
+            <View  style ={addPlayerFormStyle.button}>
+                <Button
+                title='Add'
+                onPress ={handleSubmit}/>
+            </View>
+
         </KeyboardAvoidingView>
     );
 }
@@ -59,20 +79,9 @@ const addPlayerFormStyle = StyleSheet.create({
         borderColor:'#8063FA',
         borderWidth:1
     },
-    button:{
-        width:60,
-        height:60,
-        backgroundColor : '#FFF',
-        borderRadius:60,
-        justifyContent:'center',
-        alignItems:'center',
-        borderColor:'#8063FA',
-        borderWidth: 1
-    },
-    plus:{
-        color:'#8063FA',
-        fontSize: 20,
-        justifyContent:'center',
-        alignItems:'center'
+    button: {
+        marginBottom : 5,
+        flexDirection: "row",
+        padding : 15,
     }
 });

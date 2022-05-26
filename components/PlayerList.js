@@ -1,8 +1,8 @@
 //Consumer allows to access the value in your component
-import React, {useContext} from 'react';
+import React, {useContext,useState} from 'react';
 import {
     StyleSheet,
-    FlatList,
+    FlatList
 } from 'react-native';
 import Player from "./Player";
 import {GlobalContext} from "./context/Provider";
@@ -10,16 +10,19 @@ import {GlobalContext} from "./context/Provider";
 const PlayerList = () => {
 
     //give the context to the component
-    const {
-        players:{data}
-    }=useContext(GlobalContext);
+    const { state }=useContext(GlobalContext);
 
-    console.log('players',data);
-
+    //https://www.reactnative.express/app/data_management/usereducer
+    //console.log(state.data);
     return (
         <FlatList
-            data={data}
-            renderItem={({item}) => <Player name={item.name} />}
+            data={state.data}
+            keyExtractor={(item)=>item.id}
+            renderItem={({item}) =>
+                <Player
+                    id={item.id} name={item.name} score={item.score}
+                />
+            }
         />
     );
 }

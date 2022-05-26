@@ -13,6 +13,7 @@ import AddPlayerForm from "./components/AddPlayerForm";
 import PlayerList from "./components/PlayerList";
 import GlobalContext from "./components/context/Provider";
 
+
 export default function App() {
 
  // console.log(Dimensions.get("screen"));
