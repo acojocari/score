@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
     StyleSheet,
     Text,
@@ -9,8 +9,12 @@ import {
 } from 'react-native';
 import Stats from "./Stats";
 import Stopwatch from "./Stopwatch";
+import {GlobalContext} from "./context/Provider";
 
 const Header = () => {
+    //give the context to the component
+    const { state }=useContext(GlobalContext);
+
     return (
         <View style={headerStyle.container}>
             <View>
@@ -20,7 +24,7 @@ const Header = () => {
             <Text style ={headerStyle.text}>SCORE GAME</Text>
 
             <View>
-                <Stopwatch />
+                <Stopwatch elapsedTime={state.timer.elapsedTime}/>
             </View>
         </View>
     );

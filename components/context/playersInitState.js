@@ -1,3 +1,8 @@
 export default {
-    data: []
+    data: [],
+    timer : {
+        isRunning: false,
+        elapsedTime: 0,
+        previousTime: 0
+    }
 }

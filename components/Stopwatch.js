@@ -5,11 +5,11 @@ import {
     View
 } from 'react-native';
 
-const Stopwatch = () => {
+const Stopwatch = (props) => {
     return (
         <View style={headerStyle.container}>
                 <Text style ={headerStyle.text}>STOPWATCH</Text>
-                <Text style ={headerStyle.text}>0</Text>
+                <Text style ={headerStyle.text}>{props.elapsedTime}</Text>
                 <Text style ={headerStyle.text}>Start/Reset</Text>
         </View>
     );
