@@ -24,7 +24,7 @@ const Header = () => {
             <Text style ={headerStyle.text}>SCORE GAME</Text>
 
             <View>
-                <Stopwatch elapsedTime={state.timer.elapsedTime}/>
+                <Stopwatch elapsedTime={state.timer.elapsedTime} isRunning={state.timer.isRunning}/>
             </View>
         </View>
     );

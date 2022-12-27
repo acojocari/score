@@ -10,6 +10,8 @@ import React, {useReducer} from 'react'
 
 const reducer = (state, action) => {
 
+    //console.log(state);
+
     switch (action.type){
         case 'updatePlayer' :
             /*return state.data.map(player => {
@@ -31,10 +33,22 @@ const reducer = (state, action) => {
                 return {
                     ...state,
                     data: [...state.data, action.payload] }
+        case 'start' :
+            return {
+                ...state,
+                timer : {
+                    isRunning :true
+                }
+            } //https://www.youtube.com/watch?v=xIf9KeakswM&t=2177s
+
         default:
             return state
 
+
+
     }
+
+
 };
 
 export default reducer;
