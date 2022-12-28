@@ -80,19 +80,15 @@ const Stopwatch = (props) => {
     // we will deal with buttons
     return (
         <View style={headerStyle.container}>
-                <Text style ={headerStyle.text}>STOPWATCH</Text>
-
-                <Text style ={headerStyle.text}>{displayTime(time)}</Text>
-
-                <TouchableOpacity  style ={{backgroundColor: isRunning? '#333333':'#1c1c1e'}} onPress={handleStartButton}>
-                    <View>
-                        <Text style = {{color :isRunning ? '#ea4C49': '#37d05c'}}>
-                            {isRunning ? "STOP":"START"}
-                        </Text>
-                    </View>
-
-                </TouchableOpacity>
-
+            <Text style ={headerStyle.text}>STOPWATCH</Text>
+            <Text style ={headerStyle.text}>{displayTime(time)}</Text>
+            <TouchableOpacity  style ={{backgroundColor: isRunning? '#333333':'#1c1c1e'}} onPress={handleStartButton}>
+                <View>
+                    <Text style = {{color :isRunning ? '#ea4C49': '#37d05c'}}>
+                        {isRunning ? "stop":"start"}
+                    </Text>
+                </View>
+            </TouchableOpacity>
         </View>
     );
 }
@@ -118,7 +114,7 @@ const headerStyle = StyleSheet.create({
 
     },
     button: {
-         flexDirection: "row",
+        flexDirection: "row",
 
     }
 });
