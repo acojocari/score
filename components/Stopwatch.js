@@ -85,7 +85,7 @@ const Stopwatch = (props) => {
             <TouchableOpacity  style ={{backgroundColor: isRunning? '#333333':'#1c1c1e'}} onPress={handleStartButton}>
                 <View>
                     <Text style = {{color :isRunning ? '#ea4C49': '#37d05c'}}>
-                        {isRunning ? "stop":"start"}
+                        {isRunning ? "STOP":"START"}
                     </Text>
                 </View>
             </TouchableOpacity>
