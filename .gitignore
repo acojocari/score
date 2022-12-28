@@ -13,5 +13,11 @@ web-build/
 # macOS
 .DS_Store
 
-# exclude phpstorm files
-.idea
+# aco => exclude  files
+.idea/
+package.json
+package-lock.json
+babel.config.js
+app.json
+assets/
+expo-shared/
