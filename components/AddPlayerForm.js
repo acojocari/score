@@ -13,6 +13,7 @@ import {
     TextInput
 } from 'react-native';
 import {GlobalContext} from "./context/Provider";
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const AddPlayerForm = () => {
     //give the context to the component
@@ -35,14 +36,20 @@ const AddPlayerForm = () => {
 
             <TextInput
                 style ={addPlayerFormStyle.input}
-                placeholder={"Enter a player's name"}
+                placeholder={"Player name"}
                 value={playerName}
                 onChangeText={(value) => setName(value)}
             />
             <View  style ={addPlayerFormStyle.button}>
-                <Button
-                title='Add'
-                onPress ={handleSubmit}/>
+                <Pressable>
+                    <Icon
+                        name ="user-plus"
+                        size={30}
+                        color='#8063FA'
+                        onPress={handleSubmit}
+                    ></Icon>
+                </Pressable>
+
             </View>
 
         </KeyboardAvoidingView>

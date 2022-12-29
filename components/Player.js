@@ -20,6 +20,10 @@ const Player = (props) => {
     const context =useContext(GlobalContext);
    // let number;
     const [points,setPoints]= useState('');
+
+    const truncate = (str, n) => {
+        return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+    };
     function handleSubmitt(e){
         //to avoid the refresh page
         e.preventDefault()
@@ -29,29 +33,35 @@ const Player = (props) => {
     }
     return (
         <View style={playerStyle.container}>
-            <Pressable>
+            <Pressable style ={playerStyle.button}>
                 <Icon
-                    name ="remove" size={20}
+                    name ="remove"
+                    size={20}
                     color="#de0101"
                     onPress={() => context.dispatch({type: 'removePlayer', payload:{id : props.id}})}
                 ></Icon>
             </Pressable>
 
-            <Text style ={playerStyle.namePlayer}>{props.name}</Text>
+            <Text style ={playerStyle.content}>{truncate(props.name,20)}</Text>
 
-            <Text>{props.score}</Text>
+            <Text style ={playerStyle.content}>{props.score}</Text>
 
             <TextInput
                 style={playerStyle.input}
-                placeholder="enter"
+                placeholder="vp"
                 keyboardType="numeric"
                 value={points}
                 onChangeText={(value) => setPoints(value)}
 
             />
-            <Button
-                title="Update"
-                onPress ={handleSubmitt}/>
+            <Pressable style ={playerStyle.button}>
+                <Icon
+                    name ="plus"
+                    color = "#8063FA"
+                    size={20}
+                    onPress={handleSubmitt}
+                ></Icon>
+            </Pressable>
 
         </View>
     );
@@ -64,17 +74,16 @@ const playerStyle = StyleSheet.create({
         backgroundColor: '#FFF',
         padding : 15,
         borderRadius : 15,
-        justifyContent: "space-between",
         alignItems: "center",
         top:15,
         flexDirection: "row",
         marginBottom : 5
     },
-    namePlayer: {
+    content: {
 //        color: "#000",
-        fontSize: 15,
-        fontWeight: "bold",
-        paddingRight: 100,
+    //    fontSize: 15,
+      //  fontWeight: "bold",
+        width: 120,
     },
     addScore: {
         width : 10,
@@ -86,7 +95,7 @@ const playerStyle = StyleSheet.create({
         borderRadius: 5
     },
     input:{
-//        width : 20,
+         width : 25,
      //   height : 10,
 //        paddingVertical : 10,
 //        paddingHorizontal : 10,
@@ -96,6 +105,9 @@ const playerStyle = StyleSheet.create({
         borderRadius: 10,
 //        borderColor:'#8063FA',
 //        borderWidth:1
+    },
+    button:{
+        padding:10
     }
 
 });

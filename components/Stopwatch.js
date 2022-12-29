@@ -83,7 +83,7 @@ const Stopwatch = (props) => {
         </View>
     );
 }
-export default React.memo(Stopwatch); //if the previous render is the same then will keeps the previous one
+export default Stopwatch;
 
 const headerStyle = StyleSheet.create({
     container: {
