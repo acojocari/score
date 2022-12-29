@@ -1,37 +1,18 @@
-import React from 'react';
+import React, {useContext, useState} from 'react';
 import {
     StyleSheet,
     Text,
     View
 } from 'react-native';
-
+import {GlobalContext} from "./context/Provider";
 
 const Stats = () => {
-    const players = [
-        {
-            name: "Guil",
-            score: 3,
-            id: 1
-        },
-        {
-            name: "Treasure",
-            score: 45,
-            id: 2
-        },
-        {
-            name: "Ashley",
-            score: 66,
-            id: 3
-        },
-        {
-            name: "James",
-            score: 89,
-            id: 4
-        }
-    ]
+    //give the context to the component
+    const { state }=useContext(GlobalContext);
+    console.log(state.data);
 
-    const totalPlayers = players.length;
-    const totalPoints = players.reduce( (total, player) => {
+    const totalPlayers = state.data.length;
+    const totalPoints = state.data.reduce( (total, player) => {
         return total + player.score;
     }, 0);
 

@@ -45,7 +45,7 @@ const Player = (props) => {
                 style={playerStyle.input}
                 placeholder="enter"
                 keyboardType="numeric"
-               value={points}
+                value={points}
                 onChangeText={(value) => setPoints(value)}
 
             />
