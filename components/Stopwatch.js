@@ -15,36 +15,25 @@ const Stopwatch = (props) => {
     //console.log(props);
     const padToTwo = (number) => (number <= 9 ? `0${number}`: number); //ex 7 --> 07, 17 --> 17
 
-    const displayTime = (centiseconds) => {
+    const displayTime = (seconds) => {
         let hours = 0;
         let minutes = 0;
-        let seconds = 0;
 
-
-        if(centiseconds<0){
-            centiseconds = 0;
-        }
-        if(centiseconds <100){
-            return `00:00:00,${padToTwo(centiseconds)}`//if the centisecods is 77 then the output will be : 00:00:00.77
-        }
-
-        let remainCentiseconds = centiseconds % 100;
-        seconds = (centiseconds - remainCentiseconds) / 100;
         if (seconds < 60) {
-            return `00:00:${padToTwo(seconds)},${padToTwo(remainCentiseconds)}`;
+            return `00:00:${padToTwo(seconds)}`;
         }
 
         let remainSeconds = seconds % 60;
         minutes = (seconds - remainSeconds) / 60;
 
         if (minutes < 60) {
-            return `00:${padToTwo(minutes)}:${padToTwo(remainSeconds)},${padToTwo(remainCentiseconds)}`;
+            return `00:${padToTwo(minutes)}:${padToTwo(remainSeconds)}`;
         }
 
         let remainMinutes = minutes % 60;
-        hours = Math.floor(centiseconds  / 360000);
+        hours = Math.floor(seconds  / 3600);
 
-        return `${padToTwo(hours)}:${padToTwo(remainMinutes)}:${padToTwo(remainSeconds)},${padToTwo(remainCentiseconds)}`;
+        return `${padToTwo(hours)}:${padToTwo(remainMinutes)}:${padToTwo(remainSeconds)}`;
     }
 
     const [time,setTime]  = useState(0);
@@ -69,7 +58,8 @@ const Stopwatch = (props) => {
         if(!isRunning){
             const interval = setInterval(()=>{
                 setTime((previousTime) => previousTime+1);
-            },10);
+            },1000);
+
             timer.current=interval;
         }else{
             clearInterval(timer.current);
@@ -80,7 +70,8 @@ const Stopwatch = (props) => {
     // we will deal with buttons
     return (
         <View style={headerStyle.container}>
-            <Text style ={headerStyle.text}>STOPWATCH</Text>
+            <Text style ={headerStyle.text}>STOPWATCH {console.log(time)}</Text>
+
             <Text style ={headerStyle.text}>{displayTime(time)}</Text>
             <TouchableOpacity  style ={{backgroundColor: isRunning? '#333333':'#1c1c1e'}} onPress={handleStartButton}>
                 <View>
